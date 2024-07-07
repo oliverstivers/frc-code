@@ -10,4 +10,7 @@
 1. [[WPILib Installation]]()
 2. [[Github Account Creation and Setup]]()
 3. [[Additional Tools]]()
+## Mechanism Control
+1. [[PID]]()
+2. [[Motion Profiling]]()
 ## Miscellaneous
