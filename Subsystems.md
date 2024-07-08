@@ -26,4 +26,12 @@ At the top is where we like to keep _subsystem specific_ constants, which we nam
 Constants should also always be private and final, since we don't want to change them (they're __constants__ after all), and since they are subsystem specific, we do not need access to them outside the class. Examples of types of constants we'll define in our code include gear ratios, zero offsets, [[PID]]() gains, [[Motion Profiling]]() constraints, etc. 
 
 ### Constructor
-The constructor of a subsystem usually contains no arguments, and simply performs any initialization actions that are needed for the subsystem to be in the same state each time the robot is started. This includes applying motor configurations, resetting encoder values, etc. 
+The constructor of a subsystem usually contains no arguments, and simply performs any initialization actions that are needed for the subsystem to be in the same state each time the robot is started. This includes applying motor configurations, resetting encoder values, etc. If configuration steps must be applied in multiple places, and there's a lot needed to configure a motor, it's good practice to make an `applyConfigs()` method, or something similar. 
+
+## Methods
+In FRC programming, it's ideal to keep as many methods private as possible, especially ones that set power to a motor, or can alter the state of the subsystem in the real world. Things like getter methods can be public, if you need to access information about the subsystem from the outside. This will be dove into more in [[Commands]](), but a subsystem should NEVER have a public `setPower()` method. 
+
+\[💡] __Never make public `setPower()` or similar methods in your subsystem. When at all possible, the only way you should be able to set any sort of motor power from the outside of the class should be through a command.__
+
+Sometimes, private methods that set motor power are necessary for implementing certain functions. If you ever need to set power to a motor, it is recommended you use a voltage control mode, or something similar, as opposed to duty cycle. More info can be found in [[Motors]](). 
+
