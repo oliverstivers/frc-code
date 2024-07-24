@@ -1,7 +1,6 @@
-
 ## Basics of WPILib
 1. [Subsystems](Subsystems.md)
-2. [[Commands]]()
+2. [Commands](Commands.md)
 3. [[Subystem & Command Interaction]]()
 4. [[Triggers]]()
 ### Code Implementation
